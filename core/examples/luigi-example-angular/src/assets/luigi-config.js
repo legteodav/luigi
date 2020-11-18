@@ -20,6 +20,29 @@ Luigi.setConfig({
             viewUrl: '/sampleapp.html#/sample2'
           },
           {
+            pathSegment: 'demo-library',
+            label: 'Demo Library',
+            icon: 'paper-plane',
+            viewUrl: '/sampleapp.html#/ng-luigi-demo',
+            virtualTree: true,
+            children: [
+              {
+                pathSegment: 'example-normal',
+                label: 'Normal Component',
+                icon: 'paper-plane',
+                viewUrl: '/sampleapp.html#/static-component',
+                virtualTree: trues
+              },
+              {
+                pathSegment: 'example-static',
+                label: 'Demo Library',
+                icon: 'paper-plane',
+                viewUrl: '/sampleapp.html#/static-component',
+                virtualTree: true
+              }
+            ]
+          },
+          {
             category: { label: 'Links', icon: 'cloud' },
             label: 'Luigi Project',
             externalLink: {
