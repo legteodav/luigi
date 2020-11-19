@@ -20,7 +20,6 @@ export class NgLuigiReuseStrategy implements RouteReuseStrategy {
       route.routeConfig.data.reuse ? shouldReuse = true : shouldReuse = false;
     }
 
-
     return shouldReuse;
   }
 
@@ -39,14 +38,15 @@ export class NgLuigiReuseStrategy implements RouteReuseStrategy {
   }
 
 
+
   retrieve(route: ActivatedRouteSnapshot): DetachedRouteHandle {
     NgLuigiActivatedRouteSnapshotHelper.setCurrent(route);
     if (!route.routeConfig || route.routeConfig.loadChildren) {
       return null;
     };
+
     return this.handlers[this.getUrl(route)];
   }
-
 
   shouldReuseRoute(future: ActivatedRouteSnapshot, current: ActivatedRouteSnapshot): boolean {
     let reUseUrl = false;
@@ -56,9 +56,9 @@ export class NgLuigiReuseStrategy implements RouteReuseStrategy {
       }
     }
     const defaultReuse = (future.routeConfig === current.routeConfig);
-    return reUseUrl || defaultReuse;
+    //return reUseUrl || defaultReuse;
+    return defaultReuse;
   }
-
 
   getUrl(route: ActivatedRouteSnapshot): string {
     if (route.routeConfig) {

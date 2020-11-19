@@ -3,11 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { Sample1Component } from './sample1/sample1.component';
 import { Sample2Component } from './sample2/sample2.component';
+import { ExampleComponent, NormalExampleComponent, StaticExampleComponent } from './example/example.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'sample1', component: Sample1Component },
-  { path: 'sample2', component: Sample2Component }
+  { path: 'sample2', component: Sample2Component },
+  { path: 'example-static', component: ExampleComponent, data: {reuse: true}},
+  { path: 'example-normal', component: ExampleComponent}
 ];
 
 @NgModule({
