@@ -16,7 +16,8 @@ describe('Navigation', () => {
           title: 'Preserved View',
           size: 'm'
         });
-        cy.get('.fd-dialog__close').click();
+
+        cy.get('button[aria-label="close"]').should('exist').click();
         cy.expectPathToBe('/overview');
       });
     });
@@ -310,7 +311,7 @@ describe('Navigation', () => {
     cy.get('.fd-shellbar')
       .contains('Visible for all users')
       .should('exist');
-  
+
     cy.get('.fd-shellbar')
       .contains('Visible for anonymous users only')
       .should('not.exist');
@@ -613,12 +614,14 @@ describe('Navigation', () => {
       });
 
       it('ResponsiveNavigation Semicollapsed', () => {
-        cy.viewport(1000, 600);
+        cy.viewport(800, 600);
         cy.window().then(win => {
           const config = win.Luigi.getConfig();
           config.settings.responsiveNavigation = 'semiCollapsible';
           win.Luigi.configChanged('settings');
           cy.get('[data-testid="mobile-menu"]').click();
+
+
           cy.get('.fd-popover__body').within(() => {
             cy.get('[data-testid="projects_projects"]').click();
           });
